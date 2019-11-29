@@ -49,5 +49,33 @@ public class ClasseController {
 		return new ResponseEntity<>(HttpStatus.CREATED);
 
 	}
+	/**
+	 * Suppression une classe
+	 * classeBody
+	 * param1
+	 * @return
+	 */
+	@ResponseBody
+	@PostMapping(path = "/delete/deleteclasse/{param1}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ApiOperation(value = "L'utilisateur peut supprimer une classe", httpMethod = "DELETE")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved list"),
+			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(code = 404, message = "The resource you were trying to run is not found") })
+	
+	public ResponseEntity<Void> deleteNewClass(@RequestBody String classeBody,
+			
+			@ApiParam(value = "Param1 ", required = true) @PathVariable("valeurParam1") String param1) {
+		try {
+			
+			
+
+			
+		} catch (Exception e) {
+			
+		}
+		return new ResponseEntity<>(HttpStatus.CREATED);
+
+	}
 }
 
