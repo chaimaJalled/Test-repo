@@ -35,7 +35,7 @@ public class UnitEnseignController {
 			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
 			@ApiResponse(code = 404, message = "The resource you were trying to run is not found") })
 	
-	public ResponseEntity<Void> createNewClass(@RequestBody String classeBody,
+	public ResponseEntity<Void> createNewEntiteEnseign(@RequestBody String classeBody,
 			
 			@ApiParam(value = "Param1 ", required = true) @PathVariable("valeurParam1") String param1) {
 		try {

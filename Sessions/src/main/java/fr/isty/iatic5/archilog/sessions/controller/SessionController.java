@@ -10,32 +10,26 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping(value = "/manipulClasse")
-@Api(value = "APIManipulClasse")
+@RequestMapping(value = "/manipulSession")
+@Api(value = "APIManipulSession")
 
-public class ClasseController {
-
-	//@Resource(name = "creerClasse")
-	//private DefaultMessageProducer<String, ReferentielPostEvent> sendReferentielPostEvent;
-
-	//@Resource(name = "supprimeClasse")
-	//private DefaultMessageProducer<String, SourceOrgaEvent> sendReferentielSourceOrga;
+public class SessionController {
 
 	/**
-	 * Creation d'une nouvelle classe
+	 * Creation d'une nouvelle session
 	 * classeBody
 	 * param1
 	 * @return
 	 */
 	@ResponseBody
-	@PostMapping(path = "/create/newclasse/{param1}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	@ApiOperation(value = "L'utilisateur peut créer une classe", httpMethod = "POST")
+	@PostMapping(path = "/create/newsession/{param1}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ApiOperation(value = "L'utilisateur peut créer une session", httpMethod = "POST")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved list"),
 			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
 			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
 			@ApiResponse(code = 404, message = "The resource you were trying to run is not found") })
 	
-	public ResponseEntity<Void> createNewClass(@RequestBody String classeBody,
+	public ResponseEntity<Void> createNewSession(@RequestBody String classeBody,
 			
 			@ApiParam(value = "Param1 ", required = true) @PathVariable("valeurParam1") String param1) {
 		try {
@@ -50,20 +44,20 @@ public class ClasseController {
 
 	}
 	/**
-	 * Suppression d'une classe
+	 * Supprimer une session
 	 * classeBody
 	 * param1
 	 * @return
 	 */
 	@ResponseBody
-	@PostMapping(path = "/delete/deleteclasse/{param1}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	@ApiOperation(value = "L'utilisateur peut supprimer une classe", httpMethod = "DELETE")
+	@PostMapping(path = "/delete/deletesession/{param1}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ApiOperation(value = "L'utilisateur peut supprimer une session", httpMethod = "DELETE")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved list"),
 			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
 			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
 			@ApiResponse(code = 404, message = "The resource you were trying to run is not found") })
 	
-	public ResponseEntity<Void> deleteNewClass(@RequestBody String classeBody,
+	public ResponseEntity<Void> deleteSession(@RequestBody String classeBody,
 			
 			@ApiParam(value = "Param1 ", required = true) @PathVariable("valeurParam1") String param1) {
 		try {
@@ -78,4 +72,3 @@ public class ClasseController {
 
 	}
 }
-
