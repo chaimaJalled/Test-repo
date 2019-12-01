@@ -9,9 +9,9 @@ import fr.isty.iatic5.archilog.sessions.config.SqlUtils;
 public class App {
 
 	public static void main(String[] args) {
-		SqlUtils sqlUtils = new SqlUtils();
-		sqlUtils.connect();
+		
 		SpringApplication.run(App.class, args);
+		
 
 	}
 
