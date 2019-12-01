@@ -81,6 +81,7 @@ public class ClasseController {
 		return new ResponseEntity<>(listClass,HttpStatus.OK);
 
 	}
+	
 	/**
 	 * Suppression d'une classe classeBody param1
 	 * 

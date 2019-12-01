@@ -144,11 +144,9 @@ public class SessionImplementation implements SessionInterface {
 
 		try {
 			id = obj.getString("id");
-			// System.out.println("id : "+id);
 			promotion = Integer.parseInt(obj.getString("promotion"));
-			// System.out.println("promotion : "+promotion);
 			filiere = obj.getString("filiere");
-			// System.out.println("filiere : "+filiere);
+		
 		} catch (JSONException e) {
 
 			System.out.println("Unexpected json file, should be: promotion,filiere");
@@ -157,7 +155,6 @@ public class SessionImplementation implements SessionInterface {
 
 		Classe classe = new Classe(id, promotion, filiere);
 
-		// System.out.println("Contenu de l'objet Classe to save : "+classe.toString());
 
 		String ret = "{ \"id\": \"" + id + "\"}";
 		classe.save();

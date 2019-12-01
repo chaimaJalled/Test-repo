@@ -1,5 +1,4 @@
 
-
 package fr.isty.iatic5.sessions.service;
 
 import java.sql.ResultSet;
@@ -56,12 +55,12 @@ public class Creneau {
 	}
 
 	public void save() {
-	SqlUtils.connect();
-	SqlUtils.requestUpdate(String.format("INSERT INTO CRENEAU VALUES('%s','%s','%s','%s','%s','%s')", this.id,
+		SqlUtils.connect();
+		SqlUtils.requestUpdate(String.format("INSERT INTO CRENEAU VALUES('%s','%s','%s','%s','%s','%s')", this.id,
 				this.debut.toString(), this.fin.toString(), this.jour.toString(),
 				this.classe == null ? "" : this.classe.getId(),
 				this.uniteEnseignement == null ? "" : this.uniteEnseignement.getId()));
-	SqlUtils.disconnect();
+		SqlUtils.disconnect();
 	}
 
 	public String getId() {
@@ -148,7 +147,7 @@ public class Creneau {
 	public static List<Creneau> getAll() {
 		SqlUtils.connect();
 		ResultSet set = SqlUtils.requestSelect(String.format("SELECT * FROM CRENEAU"));
-		
+
 		List<Creneau> result = new ArrayList<Creneau>();
 
 		try {
@@ -170,5 +169,5 @@ public class Creneau {
 	public String toString() {
 		return "" + id + " ; " + debut + " ; " + fin + " ; " + jour + "\n";
 	}
-	
+
 };
