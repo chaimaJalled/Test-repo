@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 //@Service
 public class SessionImplementation implements SessionInterface {
 
-	public void initDatabase() throws ClassNotFoundException {
+	public static void initDatabase(){
 		Connection conn = null;
 		String url = "jdbc:sqlite:data.db";
 		try {
@@ -60,6 +60,15 @@ public class SessionImplementation implements SessionInterface {
 			System.out.println(e.getMessage());
 		}
 
+		sql = "CREATE TABLE IF NOT EXISTS Session(ID TEXT, IDClasse TEXT,IDCreneau TEXT,IDUE TEXT)";
+		try (Statement stmt = conn.createStatement()) {
+			// create a new table
+			stmt.execute(sql);
+			System.out.println("session table created");
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
 		sql = "CREATE TABLE IF NOT EXISTS CRENEAU(ID TEXT PRIMARY KEY,debut TEXT,fin TEXT,jour TEXT,classe TEXT,uniteEnseignement TEXT, FOREIGN KEY(classe) REFERENCES classe(id),FOREIGN KEY(uniteEnseignement) REFERENCES UniteEnseignement(id))";
 		try (Statement stmt = conn.createStatement()) {
 			// create a new table
@@ -165,6 +174,7 @@ public class SessionImplementation implements SessionInterface {
 	@Override
 	public String createSession(String JSONEntry) {
 		// TODO Auto-generated method stub
+
 		String UE = null;
 		String classe = null;
 		String creneau = null;
@@ -176,8 +186,13 @@ public class SessionImplementation implements SessionInterface {
 			creneau = obj.getString("creneau");
 
 			UniteEnseignement ue = UniteEnseignement.getById(UE);
+			System.out.println("ue :"+ue);
+			
 			Classe objClasse = Classe.getById(classe);
+			System.out.println("classe :"+objClasse);
+			
 			Creneau cr = Creneau.getById(creneau);
+			System.out.println("creneau :"+cr);
 
 			cr.setUniteEnseignement(ue);
 			cr.setClasse(objClasse);

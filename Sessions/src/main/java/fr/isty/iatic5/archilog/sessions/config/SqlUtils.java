@@ -6,9 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
 //@Configuration
 public class SqlUtils {
 	private static Connection conn = null;
@@ -19,8 +16,6 @@ public class SqlUtils {
 		try {
 
 			conn = DriverManager.getConnection(url);
-
-			System.out.println("Connection to SQLite has been established.");
 
 		} catch (SQLException e) {
 			System.out.println("probleme de connexion sur sqlite : "+ e.getMessage());

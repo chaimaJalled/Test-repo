@@ -9,7 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import fr.isty.iatic5.sessions.service.Classe;
 import fr.isty.iatic5.sessions.service.Creneau;
 import fr.isty.iatic5.sessions.service.SessionImplementation;
 

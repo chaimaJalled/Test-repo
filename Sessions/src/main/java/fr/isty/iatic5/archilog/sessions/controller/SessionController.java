@@ -5,14 +5,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import fr.isty.iatic5.sessions.service.Classe;
+import fr.isty.iatic5.sessions.service.Session;
 import fr.isty.iatic5.sessions.service.SessionImplementation;
 
 import java.util.List;
-
-import javax.annotation.Resource;
 
 @RestController
 @RequestMapping(value = "/manipulSession")
@@ -29,14 +27,12 @@ public class SessionController {
 	@ResponseBody
 	@PostMapping(path = "/create/newsession", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ApiOperation(value = "L'utilisateur peut créer une session", httpMethod = "POST")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved list"),
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully message post"),
 			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
 			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
 			@ApiResponse(code = 404, message = "The resource you were trying to run is not found") })
 	
-	public ResponseEntity<Void> createNewSession(@RequestBody String classeBody,
-			
-			@ApiParam(value = "Param1 ", required = true) @PathVariable("valeurParam1") String param1) {
+	public ResponseEntity<Void> createNewSession(@RequestBody String classeBody) {
 		try {
 			
 			SessionImplementation sessionImplementation = new SessionImplementation ();
@@ -58,23 +54,23 @@ public class SessionController {
 	 */
 	@ResponseBody
 	@GetMapping(path = "/get/getSession", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	@ApiOperation(value = "L'utilisateur peut afficher un creneau", httpMethod = "GET", response = Classe.class,
+	@ApiOperation(value = "L'utilisateur peut afficher un creneau", httpMethod = "GET", response = Session.class,
 	responseContainer = "List")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved list"),
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully message get"),
 			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
 			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
 			@ApiResponse(code = 404, message = "The resource you were trying to run is not found") })
 
-	public ResponseEntity<List<Classe>> getCreneau() {
-		List<Classe> listClass = null ;
+	public ResponseEntity<List<Session>> getCreneau() {
+		List<Session> listSession = null ;
 
 		try {
-			listClass = Classe.getAll();
+			listSession = Session.getAll();
 
 		} catch (Exception e) {
-         System.out.print("Erreur lors de l'appel de l'API /get/getCreneau");
+         System.out.print("Erreur lors de l'appel de l'API /get/getSession");
 		}
-		return new ResponseEntity<>(listClass,HttpStatus.OK);
+		return new ResponseEntity<>(listSession,HttpStatus.OK);
 
 	}
 	/**
@@ -86,21 +82,19 @@ public class SessionController {
 	@ResponseBody
 	@DeleteMapping(path = "/delete/deletesession", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ApiOperation(value = "L'utilisateur peut supprimer une session", httpMethod = "DELETE")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved list"),
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully message delete"),
 			@ApiResponse(code = 401, message = "You are not authorized to view the resource"),
 			@ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
 			@ApiResponse(code = 404, message = "The resource you were trying to run is not found") })
 	
-	public ResponseEntity<Void> deleteSession(@RequestBody String classeBody,
-			
-			@ApiParam(value = "Param1 ", required = true) @PathVariable("valeurParam1") String param1) {
+	public ResponseEntity<Void> deleteSession(@RequestBody String classeBody) {
 		try {
 			
-			
-
+			SessionImplementation sessionImplementation = new SessionImplementation();
+			sessionImplementation.deleteSession(classeBody);
 			
 		} catch (Exception e) {
-			
+			System.out.println("Erreur lors de l'appel de l'API /delete/deletesession :" + e.getMessage());
 		}
 		return new ResponseEntity<>(HttpStatus.CREATED);
 

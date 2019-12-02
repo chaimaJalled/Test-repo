@@ -64,16 +64,10 @@ public class ClasseController {
 			@ApiResponse(code = 404, message = "The resource you were trying to run is not found") })
 
 	public ResponseEntity<List<Classe>> getClasse() {
-		//String response = null;
 		List<Classe> listClass = null ;
 
 		try {
-			//SessionImplementation sessionImplementation = new SessionImplementation ();
-			//response = sessionImplementation.listClasse();
 			listClass = Classe.getAll();
-			
-			
-			
 
 		} catch (Exception e) {
          System.out.print("Erreur lors de l'appel de l'API /get/getClasse");

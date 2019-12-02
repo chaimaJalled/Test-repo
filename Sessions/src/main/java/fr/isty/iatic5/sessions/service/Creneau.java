@@ -113,11 +113,15 @@ public class Creneau {
 
 	public void update() {
 		SqlUtils.connect();
+		System.out.print("sa classe : "+this.classe);
 		SqlUtils.requestUpdate(String.format(
 				"UPDATE CRENEAU SET debut='%s',fin='%s',jour='%s',classe='%s',uniteEnseignement='%s' WHERE id='%s'",
-				this.id, this.debut.toString(), this.fin.toString(), this.jour.toString(),
+				this.debut.toString(), this.fin.toString(), this.jour.toString(),
 				this.classe == null ? "" : this.classe.getId(),
-				this.uniteEnseignement == null ? "" : this.uniteEnseignement.getId(), this.id));
+				this.uniteEnseignement == null ? "" : this.uniteEnseignement.getId(),
+						this.id));
+
+		System.out.print(" ligne crenau maj");
 		SqlUtils.disconnect();
 	}
 
