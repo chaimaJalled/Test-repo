@@ -117,7 +117,7 @@ C'est une SpringApplication qui permet de lancer le serveur Tomcat intégrée da
 Il y a deux possiblités pour exécuter et arreter le serveur :
 
 **a-IDE**
-Pour l'exécuter ou l'arrêter , il suffit de lancer ou arrêter la classe Main sur Eclipse.
+Pour l'exécuter ou l'arrêter , il suffit de lancer ou arrêter la classe Main sur Eclipse. Ces deux commandes s'exécutent dans la racine du projet.
 
 **b-commande**
 Commande d'exécution (via Maven) :
@@ -126,5 +126,10 @@ mvn spring-boot:run
 Commande d'arret (via Maven) :
 mvn spring-boot:stop
 
+**c-Test**
+Pour documenter l'API: Il suffit d'appler cet URL : http://localhost:8080/swagger-ui.html#/
+Vous aurez une interface qui illustre les fonctions créer lors d'un POST, GET et DELETE.
+POST et DELETE on besoin d'un body c'est là où nous mettons le contenu à créer ou à supprimer contrairement à la méthode GET qui n'a pas besoin d'un body pour s'exécuter.
+Vous auriez
 
        
