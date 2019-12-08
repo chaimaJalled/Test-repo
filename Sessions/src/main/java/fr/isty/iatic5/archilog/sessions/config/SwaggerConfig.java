@@ -23,10 +23,9 @@ public class SwaggerConfig {
 	 */
 	@Bean
 	public Docket api() {
-//Predicate<String> predicateUrl = PathSelectors.regex("")::apply;
+
 		return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).useDefaultResponseMessages(false).select()
 				.apis(RequestHandlerSelectors.basePackage("fr.isty.iatic5.archilog.sessions.controller"))
-              //.paths(predicateUrl::test)
 				.build();
 	}
 

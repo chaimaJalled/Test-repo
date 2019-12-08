@@ -19,8 +19,6 @@ import fr.isty.iatic5.sessions.service.SessionImplementation;
 
 public class ClasseController {
 
-	//@Autowired
-	//SessionImplementation sessionImplementation;
 
 	/**
 	 * Creation d'une nouvelle classe classeBody param1
