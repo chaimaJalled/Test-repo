@@ -134,5 +134,7 @@ Pour documenter l'API: Il suffit d'appler cet URL : http://localhost:8080/swagge
 Vous aurez une interface qui illustre les fonctions créer lors d'un POST, GET et DELETE.
 POST et DELETE on besoin d'un body c'est là où nous mettons le contenu à créer ou à supprimer contrairement à la méthode GET qui n'a pas besoin d'un body pour s'exécuter.
 Vous auriez
+# Point important
 
+Dans le fichier application.properties vous avez la possibilité de modifier le port du serveur. Ici est configuré à 8080 
        
